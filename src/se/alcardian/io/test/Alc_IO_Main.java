@@ -8,7 +8,9 @@ import se.alcardian.io.Alc_IO;
 public class Alc_IO_Main {
 
 	/**
-	 * @param args 
+	 * @param args To test to view the html code of a site, send its URL as argument (e.g. "https://www.google.se/").
+	 * To download an image from the internet, send its URL along with the location on the computer you want to save it to (e.g. "http://i.imgur.com/oo9wB35.jpg" "C:\downloads\test.jpg").
+	 * Note that the download method requires the URL to end in the file format (".jpg", ".webm" etc) or it will not work.
 	 */
 	public static void main(String[] args) {
 		if(args.length == 1){

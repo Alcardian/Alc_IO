@@ -37,11 +37,9 @@ public class Alc_IO {
 		byte[] buffer = new byte[1024];
 
 		int numRead;
-		// long numWritten = 0;
-
+		
 		while ((numRead = in.read(buffer)) != -1) {
 			out.write(buffer, 0, numRead);
-			// numWritten += numRead;
 		}
 		if (in != null) {
 			in.close();
@@ -49,20 +47,31 @@ public class Alc_IO {
 		if (out != null) {
 			out.close();
 		}
-
-		// System.out.println(localFileName + "\t" + numWritten);
-
 	}
 	
+	/**
+	 * A non-web based function. It returns the file's name based on the address or URL itself
+	 * @param address
+	 * @return
+	 */
 	public static String getFileName(String address){
-		
 		return address.substring(address.lastIndexOf('/')+1);
 	}
 	
+	/**
+	 * A non-web based function. It returns the file's type based on the address or URL itself
+	 * @param address
+	 * @return
+	 */
 	public static String getFileType(String address){
 		return address.substring(address.lastIndexOf('.'));
 	}
 	
+	/**
+	 * Reads a file. Built with the intent of reading simple text files.
+	 * @param fileName
+	 * @return
+	 */
 	public static ArrayList<String> ReadFile(String fileName){
 		ArrayList<String> buffer = new ArrayList<String>();
 		Scanner sc;	//scanner, for read from file
@@ -87,37 +96,8 @@ public class Alc_IO {
 	 */
 	public static ArrayList<String> getWebPage(String stringURL) {
 		return getWebPage(stringURL, "UTF-8");
-		/*
-		URL url;
-		InputStream is = null;
-		BufferedReader br;
-		String line;
-		ArrayList<String> buffer = new ArrayList<String>();
-
-		try {
-			url = new URL(stringURL);
-			is = url.openStream(); // throws an IOException
-			br = new BufferedReader(new InputStreamReader(is));
-
-			while ((line = br.readLine()) != null) { // While it can still read more lines
-				buffer.add(line); // Save line to buffer
-			}
-		} catch (MalformedURLException mue) {
-			System.out.println(stringURL);	
-			mue.printStackTrace();
-		} catch (IOException ioe) {
-			ioe.printStackTrace();
-		} finally {
-			try {
-				if (is != null)
-					is.close();
-			} catch (IOException ioe) {
-				// nothing to see here
-			}
-		}
-		return buffer;
-		*/
 	}
+	
 	/**
 	 * Returns the HTML code of a website as an ArrayList<String>.
 	 * @param stringURL URL address to site. The address MOST begin with "http://" like "http://google.com" or it will crash.
@@ -130,16 +110,11 @@ public class Alc_IO {
 		BufferedReader br;
 		String line;
 		ArrayList<String> buffer = new ArrayList<String>();
-		//int temp;
-		//char ctemp;
 		
 		try {
 			url = new URL(stringURL);
 			is = url.openStream(); // throws an IOException
-			//br = new BufferedReader(new InputStreamReader(is));
 			br = new BufferedReader(new InputStreamReader(is, encoding));
-
-			//is.rea
 			
 			while ((line = br.readLine()) != null) { // While it can still read more lines
 				buffer.add(line); // Save line to buffer
@@ -162,7 +137,6 @@ public class Alc_IO {
 	}
 	
 	/**
-	 * 
 	 * @param folderPath
 	 * @return True if the folder exists, False if it doesn't.
 	 */
@@ -171,7 +145,6 @@ public class Alc_IO {
 	}
 	
 	/**
-	 * 
 	 * @param filePath e.g. on Windows 10 "C:\Media\"
 	 * @param fileName e.g. on Windows 10 "funnyImage.jpg"
 	 * @return True if the file exists, False if it doesn't.
@@ -181,7 +154,6 @@ public class Alc_IO {
 	}
 	
 	/**
-	 * 
 	 * @param folderPath
 	 * @return True if it managed to create folder/s.
 	 */
