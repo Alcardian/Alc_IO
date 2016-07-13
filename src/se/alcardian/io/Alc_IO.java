@@ -33,6 +33,11 @@ public class Alc_IO {
 		URL url = new URL(address);
 		out = new BufferedOutputStream(new FileOutputStream(localFileName));
 		conn = url.openConnection();
+		
+		// User-Agent prevents some situations when certain sites return HTTP response code 403 
+		// 403 = Forbidden, The server understood the request but refuses to authorize it
+		conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11");
+		
 		in = conn.getInputStream();
 		byte[] buffer = new byte[1024];
 
